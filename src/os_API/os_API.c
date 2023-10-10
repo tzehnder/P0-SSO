@@ -83,6 +83,7 @@ void os_bitmap(int num) {
     // Si num es -1, imprimir todo el bitmap
     int start_block = (num == -1) ? 0 : num;
     int end_block = (num == -1) ? BITMAP_BLOCKS : num + 1;
+    printf( "start_block: %d, end_block: %d\n", start_block, end_block);
 
     for (int i = start_block; i < end_block; i++) {
         fseek(disk, i * 1024, SEEK_SET);
@@ -103,4 +104,29 @@ void os_bitmap(int num) {
     printf("Bloques libres: %d\n", TOTAL_BLOCKS - occupied_blocks);
 
     fclose(disk);
+}
+
+void os_tree(){
+    //leemos el archivo
+    printf("##########\n");
+    FILE* disk = fopen(global_disk_path, "rb");
+    if (!disk) {
+        perror("Error al abrir el disco");
+        return;
+    }
+
+    printf("##########\n");
+
+
+    unsigned char block[1024];  // 1 KB por bloque
+    fseek(disk, 257 * 1024, SEEK_SET);
+    fread(block, 1, 1024, disk);
+    printf("block: %s\n", block);
+    for (int j = 0; j < 1024; j++) {
+            for (int bit = 0; bit < 8; bit++) {
+                printf("%d", (block[j] >> (7 - bit)) & 1);
+                
+            }
+        }
+
 }

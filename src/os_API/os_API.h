@@ -22,3 +22,5 @@ void os_unmount();
 void os_mount(const char* diskname); // ocupo const porque sino arroja una advertencia, no estoy seguro si es necesario
 
 void os_bitmap(int num);
+
+void os_tree();
