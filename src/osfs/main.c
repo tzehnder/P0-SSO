@@ -15,7 +15,7 @@ int main(int argc, char const *argv[])
 
 	*/
 	os_mount(argv[1]); 
-	// os_tree();
-	os_bitmap(0);
+	os_tree();
+	
 	os_unmount();
 }

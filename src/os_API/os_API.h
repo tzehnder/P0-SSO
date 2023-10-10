@@ -1,9 +1,11 @@
 // Tells the compiler to compile this file once
 #include <stdint.h>
+#include "os_tree.h"
 #pragma once
 
 #define TOTAL_BLOCKS 2097152
 #define BITMAP_BLOCKS 256
+
 
 extern char *global_disk_path;
 
@@ -22,5 +24,7 @@ void os_unmount();
 void os_mount(const char* diskname); // ocupo const porque sino arroja una advertencia, no estoy seguro si es necesario
 
 void os_bitmap(int num);
+
+int os_exits(char* path);
 
 void os_tree();

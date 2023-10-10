@@ -68,6 +68,10 @@ void os_unmount() {
     }
 }
 
+int os_exits(char* path) {
+  return 0;  
+}
+
 //funcion creada con la ayuda de GPT, ni idea si hay que especificarlo
 void os_bitmap(int num) {
     //leemos el archivo
@@ -106,27 +110,22 @@ void os_bitmap(int num) {
     fclose(disk);
 }
 
+
+
 void os_tree(){
     //leemos el archivo
-    printf("##########\n");
+    printf("os");
     FILE* disk = fopen(global_disk_path, "rb");
     if (!disk) {
         perror("Error al abrir el disco");
         return;
     }
+    
 
-    printf("##########\n");
-
-
-    unsigned char block[1024];  // 1 KB por bloque
-    fseek(disk, 257 * 1024, SEEK_SET);
-    fread(block, 1, 1024, disk);
-    printf("block: %s\n", block);
-    for (int j = 0; j < 1024; j++) {
-            for (int bit = 0; bit < 8; bit++) {
-                printf("%d", (block[j] >> (7 - bit)) & 1);
-                
-            }
-        }
+    os_tree_dir(disk, 256);
+    
+   
+    
+    fclose(disk);
 
 }
