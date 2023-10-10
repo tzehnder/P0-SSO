@@ -15,7 +15,6 @@ int main(int argc, char const *argv[])
 
 	*/
 	os_mount(argv[1]); 
-	printf()
 	os_bitmap(0);
 	os_unmount();
 }

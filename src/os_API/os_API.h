@@ -5,6 +5,8 @@
 #define TOTAL_BLOCKS 2097152
 #define BITMAP_BLOCKS 256
 
+extern char *global_disk_path;
+
 typedef struct {
     char* filename;       // Nombre del archivo. Usamos un puntero a char para poder asignar memoria dinámicamente.
     uint32_t fileSize;    // Tamaño del archivo. Usamos uint32_t para asegurarnos de que tenga 4 bytes sin importar la plataforma.
